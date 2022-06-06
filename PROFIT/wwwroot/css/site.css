@@ -225,6 +225,7 @@ footer {
     background: var(--dark-gray-color);
     border-radius: 50%;
     margin-right: 10px;
+    overflow: hidden;
 }
 
 .header__info__logo img {

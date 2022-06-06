@@ -8,8 +8,12 @@ using PROFIT.Services;
 using PROFIT.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace PROFIT.Controllers
 {
@@ -18,12 +22,14 @@ namespace PROFIT.Controllers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly IFileService _fileService;
+        private readonly IUserService _userService;
 
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, IFileService fileService)
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, IFileService fileService, IUserService userService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _fileService = fileService;
+            _userService = userService;
         }
 
         [HttpGet]
@@ -88,7 +94,7 @@ namespace PROFIT.Controllers
 
             if (ModelState.IsValid)
             {
-                User user = new User { Email = model.Email, UserName = model.Email, Name = model.Name, PhoneNumber = model.Phone};
+                User user = new User { Email = model.Email, UserName = model.Email, Name = model.Name, PhoneNumber = model.Phone };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -135,5 +141,40 @@ namespace PROFIT.Controllers
         {
             await _signInManager.SignOutAsync();
         }
+
+        public IActionResult GoogleLogin()
+        {
+            string redirectUrl = Url.Action("GoogleResponse", "Account");
+            var properties = _signInManager.ConfigureExternalAuthenticationProperties("Google", redirectUrl);
+            return new ChallengeResult("Google", properties);
+        }
+
+        [AllowAnonymous]
+        public async Task<IActionResult> GoogleResponse()
+        {
+            ExternalLoginInfo info = await _signInManager.GetExternalLoginInfoAsync();
+            if (info == null)
+                return RedirectToAction(nameof(Login));
+
+            var result = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, false);
+            string[] userInfo = { info.Principal.FindFirst(ClaimTypes.Name).Value, info.Principal.FindFirst(ClaimTypes.Email).Value };
+            if (result.Succeeded)
+                return Redirect("../Home/Index");
+            else
+            {
+                User user = _userService.GetInfoFromGoogle(info);
+                IdentityResult identResult = await _userManager.CreateAsync(user);
+                if (identResult.Succeeded)
+                {
+                    identResult = await _userManager.AddLoginAsync(user, info);
+                    if (identResult.Succeeded)
+                    {
+                        await _signInManager.SignInAsync(user, false);
+                        return Redirect("../Home/Index");
+                    }
+                }
+                return RedirectToAction("Register");
+            }
+         }
     }
 }

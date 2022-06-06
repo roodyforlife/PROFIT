@@ -6,7 +6,7 @@
 <div class="authorization">
     <div class="authorization__content">
         <div class="authorization__content__form">
-            <form asp-controller="Account" asp-action="Login">
+            <form asp-controller="Account" asp-action="Login" method="post" onsubmit="return submitUserForm();">
                 <div class="authorization__form__header">
                     <a href="" class="authorization__form__header__item _active__form__item _unselectable">
                         <h3>Вход</h3>
@@ -50,13 +50,37 @@
                         </span>
                     </div>
                     <div class="authorization__form__item">
+                        <div class="g-recaptcha" data-sitekey="6LeQROEfAAAAAANcgXn0oQRg7k7iNIBOOs-gSiIA" data-callback="verifyCaptcha"></div>
+                        <div id="g-recaptcha-error"></div>
+                    </div>
+                    <div class="authorization__form__item">
                         <input class="authorization__form__submit" type="submit" value="Войти">
                     </div>
                     <div class="forgotPassword">
                         <a href="">Забыли пароль?</a>
+                    </div> 
+                    <div class="line">
+                        <span>или</span>
                     </div>
+                    <a asp-controller="Account" asp-action="GoogleLogin" class="login-with-google-btn" >Sign in with Google</a>
                 </div>
             </form>
+            <script src='https://www.google.com/recaptcha/api.js'></script>
+            <script>
+		var recaptcha_response = '';
+		function submitUserForm() {
+			if (recaptcha_response.length == 0) {
+				document.getElementById('g-recaptcha-error').innerHTML = '<span class="text1 field-validation-error">Это обязательное поле</span>';
+				return false;
+			}
+			return true;
+		}
+
+		function verifyCaptcha(token) {
+			recaptcha_response = token;
+			document.getElementById('g-recaptcha-error').innerHTML = '';
+		}
+            </script>
         </div>
     </div>
 </div>

@@ -15,6 +15,7 @@ using PROFIT.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace PROFIT
@@ -32,6 +33,7 @@ namespace PROFIT
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IFileService, FileService>();
+            services.AddScoped<IUserService, UserService>();
             services.AddDbContext<DataBaseContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -59,6 +61,15 @@ namespace PROFIT
                 googleOptions.ClientId = Configuration["Google:ClientId"];
                 googleOptions.ClientSecret = Configuration["Google:ClientSecret"];
                 googleOptions.SignInScheme = IdentityConstants.ExternalScheme;
+                googleOptions.Scope.Add("profile");
+                googleOptions.Events.OnCreatingTicket = (context) =>
+                {
+                    var picture = context.User.GetProperty("picture").GetString();
+
+                    context.Identity.AddClaim(new Claim("picture", picture));
+
+                    return Task.CompletedTask;
+                };
             });
         }
 
