@@ -1,0 +1,332 @@
+﻿@{
+    ViewData["Title"] = "Profit";
+    Layout = "_Layout";
+}
+<link href="~/css/index.css" rel="stylesheet" />
+    <div class="content__search">
+        <div class="content__search__inputs">
+            <div class="content__search__input"><input type="text"></div>
+            <div class="content__search__button">
+                <div class="search__button__text _unselectable">
+                    <h4>Поиск</h4>
+                </div>
+                <div class="search__button__image">
+                    <svg version="1.1" id="Layer_1"
+                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                         y="0px" width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50"
+                         xml:space="preserve">
+                    <image id="image0" width="50" height="50" x="0" y="0" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABGdBTUEAALGPC/xhBQAAACBjSFJN
+                        AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QA/wD/AP+gvaeTAAAM
+                        iklEQVRo3u1afXBUVZb/vY/+fN2d7k6nA4FAE2USTGZmCbPAlLijiKCbAMGaiiDsWoOMtZZbjiDl
+                        Wrr4tVZZUyo4MoWlGaZqtITFqQQNsMVAXLOAi3FZRFAJmXyRj+4k3Z10Ou91v3793rvzR/t6Xicv
+                        phksmT/mVJ0/3s1979zf/Z1z7rmnA/xN/rqEMhrkeT7zRyrz50QiAZ7nMT4+DqfTibKyMgBAe3v7
+                        /La2tjvOnz//D+3t7VX9/f1z4hNxC03RpLCwMBEIBHoqKyv/v3px9ekVt61o8fv9vCRJ6OjoAMMw
+                        KCgogMlkytrJV4qKiv5yILFYDBaLBaWlpbh48eKP33zzzV80NjbWDw8P57WKysrKyP333//2gw8+
+                        +Kvi4uK+7u5umEwmWK3WbwWIofA8D57nIQgCeJ7H8PAwCCEIBoPuHTt2/I6maQIgRymKymts1qxZ
+                        0mu/eu1pRVGQTqcRCoUQDoevSfMWDQjP80gkEiCE4Ny5c7eXl5eH9Is0Wuh0Onlu3fq6U/F4vIgQ
+                        gqGhoesGYsipIAgghICmadhsNrS2tm5YvXp1UzqdzrocISQ7/+abb55YsmTJhXnz5l30eDxhWZbp
+                        aDRa1tHRUfnpp58ujkajfzaoe7eysjJ06tSpZV6vt39kZAQMw+S10T6fLz9GYrEYotEoCCFoa2u7
+                        a7pdrq2tPdvc3Lw5Ho+7CSHgeR6EEKRSKaiqCkIIrl69uqChoeHfqqqqgkbslJeXDwuC4FJVFYOD
+                        gxgaGppR85aBgQEoioKRkRF/QUHBFOMul0s+ePDgNkIICCGIx+OIRCI4f/48Ojo6cOnSJVy+fBnR
+                        aDQLLh6Pcy+88MIrRq551113/R8hBKOjowgGgwiFQt+oRkIbDabTadA0jQceeKB5fHw8J6tUVFSE
+                        P/vssx9u3LjxN319fejq6oIgCFBVdcp3FEXB6Ogouru7IQiCsGvXrp3NHzT/02TXPHny5I9ef/31
+                        f/d4PFBVdUbNO0YIIXj//fd/umHDht/r/bqoqCh55cqVco/H03/u3Dl4vV5QFAWbzQaGYTAwMACH
+                        w4FUKgWWZVFYWAhRFKGqKkRRBCEEFRUVOH78+H333HPPf+q/bbPZ0NPTM8fr9QYnb14+MUJPN/ml
+                        l17arTcEAO+99946j8fT39nZCYfDAUVR8nZXVVXBsiyCwSDuvvvuQ88+++webdMoikIymcTu3buf
+                        N5lMkGX5GzVvRlpaWlavWrXqD/qxbdu2fdDQ0FAXCoVA0RRAgGQyCVVVwXHcNzIiy3KGOasNiqrA
+                        5XLB4XDglltuGb58+bJf26xZxbNSly5dKiQggiAI027KggUL8mPk6NGj92lsAIDJZMKTTz75uOaf
+                        FCjQNA273Q6GYXL8fTomOI4DRVFgaAbxeBwA8NRTTz2rsQIAQ8NDlpYPW+q8hV5o9o3USAyBnD17
+                        dpX+uaam5pObbrqpKzwSBiEEiqJAlmWoqgqL2TLlXNGD0MoQQghAARRNgWEYJJNJrF279p2ioiJJ
+                        /87p06fvAckkHEmSDDVvIO3t7fP0O3XnnXd+AAAEBAzDZJWmaTAsA5ZlQUCyMaO9Z7fbwXEczGYz
+                        LBZLVq1WK9LpNAoKCoTVq1ef1dv+8ssvv59IJEBRFFRFNVQjYY0Gx8fHc54XLlz4laIoYFnD6aAo
+                        CizDwmKxQFGU7EJjsdi06ZIQApfLhYULF7YB+Ik2PjQ0NJef4K0cx4nJRBL5CjvTBIqi4Ha740CG
+                        buNVZVzGX+SHlJYwPDwMnudnLPC+ZjXnqI7H45ae3h6Os3OikBCQr+QFhGXZGesgLV4YloEsy5iY
+                        mIDZZJ4mL2aE5/kpKVxVVQiCQAGZmu9bA/L1h5mZXIsQAjGVOfwCgQAKCwuRTCanP9gIMH/+fLAs
+                        y+mHbTabWjqvNGW1WK8fCMuyOQdPKBSapwW4EQiKoqAoSiZAvy4jPB4PPB5PJhFMk57tdjvC4XCl
+                        fqyoqChS7C/m4/E4LBZL3kAMs1ZZWZmgLRIAPv7441VA5gAURXGKTkxMIJlMZk9pDYyWpgkhU+ol
+                        s9kMVVXR2tp6xyTbV5xOJ0mn09dUaxkCqa6u/lj/3NTUtIHneZPT6YRW8WpAJUmCLMuGbKmKikQi
+                        AUEQIEkSkskkkskkBEEAx3E4e/bsrRcvXizWv7N8+fIzWkyaTCZDzRvIypUr3wf+fB4MDg7a3n33
+                        3V+4XK7shYthGKRSKaRSKdC0ccmmMSqKIhRFgclkAsMwWZfZu3fvC/p5LMtizZo1hxKJxLQgpgNi
+                        GInhcNhTXl4eHR0dpbRALikpETo6OvwsyyYikUgWhNlsBsuyWVdRFAU0TWeeFRVpJQ0xmQHicDgA
+                        AHPnzsWZM2dW3XbbbSc1IIQQ1NbWth05cmT5YHAQRJ2+7CktLc2PEZ/PN/bYY4+9prFCURSCwSC3
+                        ZcuWYxaLBV6vN9tpQR4NEC1uJiYmMHfuXMTH4+7NmzfnXBEAYOfOnc8BgNVshd1un1bzZmRkZAQs
+                        y9orKipiIyMjJr2x7du3v7179+4HYrEYBgYGYLPbwDIzM5JKpVBVVQVFUdy33nrrJ21tbeV6IHV1
+                        dacOHz78k1AoNOP1IG9G0uk0PB5P4p133tmkZwUA9uzZ889btmw5Jsuyr6qqChzHZe/nk0VLDD6f
+                        D1VVVfjiiy+WV1dXf66B0Oa4XC688cYbG7WiUHtvOs1bIpEIRkdHQQjBM888sxcGTYNAIBDdv3//
+                        9rGxMadmQFGUnFSsaU9PT9lzzz23h2XZKe0hv98f++ijj2oIIXn3uPJ2ratXr0JVVTgcDvh8Pjzy
+                        yCMH9+3bt3GyTwNARUVFZP369c1L/37p6dkls3udTmecEELHx+Punt6eRWfOnFnZ2Ni4PhKJZG1p
+                        7BJCsG3btv9qaGioicfjSKfTeXUdCwsL82Okt7cXvb296OrqQiQSASEEzz///K8xQxcRAHE6nYTj
+                        uLwbdk6nUzx58mSd1qgbGR6ZUa+JEU1kWYbX64Xb7cah9w5tffqpp1/t6upy63f3mvxWb/zrdx0O
+                        B9qvtJfNKZnTEwwGZyxQZ82aNWWMxgzCMAwEQcBA/wDqf1r/29bW1u/t2rVrX2lpqQTgmkAsWbKk
+                        v7Gx8dH6+vrjejA8z6Nufd2HAOAv8oNhGJjN5mn1L2KEEAKz2Qw5LSMWi8Fb6MWcOXMQCoXmNDc3
+                        bzx+/Pj6zz///Id9fX2uyWnTbrcjEAgML1++/H/XrFnTVFtbe8hut6cTiYRj0aJFg319fS49o1u3
+                        bj28f//+e8dj40ilUpkmh4H4/f7rA8LzPFSS6Zp4vV64XC4kEgkMDAwU9PX1LYzFYsWJRGIuAJnj
+                        uKt+v38oMD/wx9J5pSlZlhGNRiFJEkpLS3HhwoVlixcv/kTvYgCwb9++Jx9++OFf9vf3ZyvqyRII
+                        BK4fCEHGp2mazqmhrFYrHA5HtqRXFAWiKGb7wFojwuVygaZpeDweHDhw4F83b968dzKYtra225cu
+                        Xfo/4XDYsI4zatBdF5BUKgVJkqAoSrbto5XsmmhVLACYzWYwDJMFX1JSgoceeuhgQ0NDTmqfPXt2
+                        qru7u8RqtY5OTExMCX6O46asecZg/7ZFA5pMJjE6Ooq33npr07Jly/6Y3VmKQigUsqxdu/ZDIHND
+                        jUajGBsby6qRfKdANHY5joPD4UAymemSHD16dKXb7Vb1GbClpeXvdu7c+VZBQQHMZjMoKtMUnO7K
+                        8J0B0eo1/b3CZrMhHA7D5/MNHDlyZJ1+HgC8+uqrPz98+PDW4uLinN7YDQWiB6S/tlIUhUgkghUr
+                        Vhx75ZVX/mMymPr6+v0dHR0/8Pl84HkeoijeeCA0TWdboel0OquSJGFsbAyPP/74M5s2bTqhzaco
+                        CrIso6am5r8VWTH7/X7IaeNu/HfqWlp82Ky2HLXb7JlMR4ADBw7846JFi8L6vkBnZ2dh/X31f7Ba
+                        rXB73DcWiLa7KTGFlDRVZVnWflZTjh07dofZbM4pf5qamm5/+eWXX3S5XDcWCACkUqnsT95GKooi
+                        uru7sWDBgi8PvHvgZ0BuLffEE088feLEidVG3zYsM7dv3547iWGgqmq2pa+lQ+0E1y5QWmrUG9dS
+                        JkVR8Hg84DgOVqsVNpvNUK1WKyRJwuLqxRdkWZ59+vTpH+nXIooi89VXXzXdEEYIIdmKlmbonJ8m
+                        JqvWlpUkCS+++OK/1NTUfKr/1rp1604Y2fhOShSt4WaxWHJS6zeJqqrw+/0QRdG+Y8eO33V2dt5y
+                        7733vv3oo4/+Mt9/LPib3Ej5E2evZXKYykuoAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIyLTA1LTI5
+                        VDEyOjE4OjI0KzAwOjAwjGFUtgAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMi0wNS0yOVQxMjoxODoy
+                        NCswMDowMP087AoAAAAASUVORK5CYII=" />
+                            </svg>
+                </div>
+            </div>
+        </div>
+        <div class="content__search__inputs">
+            <div class="content__search__city">
+                <input type="text" tabindex="6" class="city__input" placeholder="Город">
+                <div class="city__list city__list__hide ">
+                    <ul class="_scroll">
+                    </ul>
+                </div>
+            </div>
+            <div class="content__search__category">
+                <h4>Категория</h4>
+                <div class="search__category__menu _scroll">
+                    <div class="search__category__item">
+                        <div class="_checkbox">
+                            <input class="_checkbox__content" type="checkbox" id="category_1" name="category"
+                                   value="1">
+                            <label for="category_1"></label>
+                        </div><h5>Взаимопомощь</h5>
+                    </div>
+                    <div class="search__category__item">
+                        <div class="_checkbox">
+                            <input class="_checkbox__content" type="checkbox" id="category_2" name="category"
+                                   value="1">
+                            <label for="category_2"></label>
+                        </div><h5>Детский мир</h5>
+                    </div>
+                    <div class="search__category__item">
+                        <div class="_checkbox">
+                            <input class="_checkbox__content" type="checkbox" id="category_3" name="category"
+                                   value="1">
+                            <label for="category_3"></label>
+                        </div><h5>Квартиры</h5>
+                    </div>
+                    <div class="search__category__item">
+                        <div class="_checkbox">
+                            <input class="_checkbox__content" type="checkbox" id="category_4" name="category"
+                                   value="1">
+                            <label for="category_4"></label>
+                        </div><h5>Комнаты</h5>
+                    </div>
+                    <div class="search__category__item">
+                        <div class="_checkbox">
+                            <input class="_checkbox__content" type="checkbox" id="category_5" name="category"
+                                   value="1">
+                            <label for="category_5"></label>
+                        </div><h5>Дома</h5>
+                    </div>
+                    <div class="search__category__item">
+                        <div class="_checkbox">
+                            <input class="_checkbox__content" type="checkbox" id="category_6" name="category"
+                                   value="1">
+                            <label for="category_6"></label>
+                        </div><h5>Земля</h5>
+                    </div>
+                    <div class="search__category__item">
+                        <div class="_checkbox">
+                            <input class="_checkbox__content" type="checkbox" id="category_7" name="category"
+                                   value="1">
+                            <label for="category_7"></label>
+                        </div><h5>Гаражи, парковки</h5>
+                    </div>
+                    <div class="search__category__item">
+                        <div class="_checkbox">
+                            <input class="_checkbox__content" type="checkbox" id="category_8" name="category"
+                                   value="1">
+                            <label for="category_8"></label>
+                        </div><h5>Аренда жилья</h5>
+                    </div>
+                    <div class="search__category__item">
+                        <div class="_checkbox">
+                            <input class="_checkbox__content" type="checkbox" id="category_9" name="category"
+                                   value="1">
+                            <label for="category_9"></label>
+                        </div><h5>Коммерческая недвижимость</h5>
+                    </div>
+                    <div class="search__category__item">
+                        <div class="_checkbox">
+                            <input class="_checkbox__content" type="checkbox" id="category_10" name="category"
+                                   value="1">
+                            <label for="category_10"></label>
+                        </div><h5>Авто</h5>
+                    </div>
+                    <div class="search__category__item">
+                        <div class="_checkbox">
+                            <input class="_checkbox__content" type="checkbox" id="category_11" name="category"
+                                   value="1">
+                            <label for="category_11"></label>
+                        </div><h5>Запчасти для транспорта</h5>
+                    </div>
+                    <div class="search__category__item">
+                        <div class="_checkbox">
+                            <input class="_checkbox__content" type="checkbox" id="category_12" name="category"
+                                   value="1">
+                            <label for="category_12"></label>
+                        </div><h5>Работа</h5>
+                    </div>
+                    <div class="search__category__item">
+
+                        <div class="_checkbox">
+                            <input class="_checkbox__content" type="checkbox" id="category_13" name="category"
+                                   value="1">
+                            <label for="category_13"></label>
+                        </div><h5>Животные</h5>
+                    </div>
+                    <div class="search__category__item">
+                        <div class="_checkbox">
+                            <input class="_checkbox__content" type="checkbox" id="category_14" name="category"
+                                   value="1">
+                            <label for="category_14"></label>
+                        </div><h5>Мебель</h5>
+                    </div>
+                    <div class="search__category__item">
+                        <div class="_checkbox">
+                            <input class="_checkbox__content" type="checkbox" id="category_15" name="category"
+                                   value="1">
+                            <label for="category_15"></label>
+                        </div><h5>Канцтовары / расходные материалы</h5>
+                    </div>
+                    <div class="search__category__item">
+                        <div class="_checkbox">
+                            <input class="_checkbox__content" type="checkbox" id="category_16" name="category"
+                                   value="1">
+                            <label for="category_16"></label>
+                        </div><h5>Сад / огород</h5>
+                    </div>
+                    <div class="search__category__item">
+                        <div class="_checkbox">
+                            <input class="_checkbox__content" type="checkbox" id="category_17" name="category"
+                                   value="1">
+                            <label for="category_17"></label>
+                        </div><h5>Предметы интерьера</h5>
+                    </div>
+                    <div class="search__category__item">
+                        <div class="_checkbox">
+                            <input class="_checkbox__content" type="checkbox" id="category_18" name="category"
+                                   value="1">
+                            <label for="category_18"></label>
+                        </div><h5>Строительство / Ремонт</h5>
+                    </div>
+                    <div class="search__category__item">
+                        <div class="_checkbox">
+                            <input class="_checkbox__content" type="checkbox" id="category_19" name="category"
+                                   value="1">
+                            <label for="category_19"></label>
+                        </div><h5>Посуда / Кухонная утварь</h5>
+                    </div>
+                    <div class="search__category__item">
+                        <div class="_checkbox">
+                            <input class="_checkbox__content" type="checkbox" id="category_20" name="category"
+                                   value="1">
+                            <label for="category_20"></label>
+                        </div><h5>Садовый инвентарь</h5>
+                    </div>
+                    <div class="search__category__item">
+                        <div class="_checkbox">
+                            <input class="_checkbox__content" type="checkbox" id="category_21" name="category"
+                                   value="1">
+                            <label for="category_21"></label>
+                        </div><h5>
+                            Хозяйственный
+                            инвентарь / Химия
+                        </h5>
+                    </div>
+                    <div class="search__category__item">
+                        <div class="_checkbox">
+                            <input class="_checkbox__content" type="checkbox" id="category_22" name="category"
+                                   value="1">
+                            <label for="category_22"></label>
+                        </div><h5>Электроника</h5>
+                    </div>
+                    <div class="search__category__item">
+                        <div class="_checkbox">
+                            <input class="_checkbox__content" type="checkbox" id="category_23" name="category"
+                                   value="1">
+                            <label for="category_23"></label>
+                        </div><h5>Бизнес и услуга</h5>
+                    </div>
+                    <div class="search__category__item">
+                        <div class="_checkbox">
+                            <input class="_checkbox__content" type="checkbox" id="category_24" name="category"
+                                   value="1">
+                            <label for="category_24"></label>
+                        </div><h5>Мода и стиль</h5>
+                    </div>
+                    <div class="search__category__item">
+                        <div class="_checkbox">
+                            <input class="_checkbox__content" type="checkbox" id="category_25" name="category"
+                                   value="1">
+                            <label for="category_25"></label>
+                        </div><h5>Хобби, отдых и спорт</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="content__search__sort">
+                <input class="SortInput" type="text">
+                <h4 class="SortValue">Сортировка</h4>
+                <div class="search__sort__menu">
+                    <div class="sort__menu__item" sort="NewDesc" sortValue="Сначала новые">
+                        <h5>Сначала новые</h5>
+                    </div>
+                    <div class="sort__menu__item" sort="NewAsc" sortValue="Сначала старые">
+                        <span>Сначала старые</h4>
+                    </div>
+                    <div class="sort__menu__item" sort="NameDesc" sortValue="От А до Я">
+                        <h5>От А до Я</h5>
+                    </div>
+                    <div class="sort__menu__item" sort="NewAsc" sortValue="От Я до А">
+                        <h5>От Я до А</h5>
+                    </div>
+                    <div class="sort__menu__item" sort="CostDesc" sortValue="Цена по убыванию">
+                        <h5>Цена по убыванию</h5>
+                    </div>
+                    <div class="sort__menu__item" sort="DescAsc" sortValue="Цена по возрастанию">
+                        <h5>Цена по возрастанию</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content__search__inputs">
+            <div class="content__search__cost"><input class="CostFrom" type="number" placeholder="Цена от"></div>
+            <div class="content__search__cost"><input class="CostTo" type="number" placeholder="Цена до"></div>
+        </div>
+    </div>
+    <div class="product">
+        <div class="product__content">
+            <div class="product__content__items">
+                <div class="product__content__item">
+                    <a href="">
+                        <div class="product__item__image shimmer"></div>
+                    </a>
+                    <div class="product__item__title">
+                        <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, voluptate!</h5>
+                    </div>
+                    <div class="product__item__info _unselectable">
+                        <h6>Кропивницкий - 19:30</h6>
+                    </div>
+                    <div class="product__item__cost">
+                        <h4>2 500 грн.</h4>
+                    </div>
+                    <div class="product__item__like" onclick="AddToLiked(2)">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em"
+                             class="css-1d65b5y">
+                            <path fill="currentColor" fill-rule="evenodd"
+                                  d="M17 2a6 6 0 0 0-5 2.686A6 6 0 0 0 7 2C3.692 2 1 4.691 1 8a5.97 5.97 0 0 0 1.233 3.633L10.709 22h2.583l8.5-10.399A5.942 5.942 0 0 0 23 8c0-3.309-2.691-6-6-6">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,640 @@
+@import url('var.css');
+
+body {
+    font-family: Arial, Roboto, sans-serif;
+    background: var(--gray-color);
+}
+
+.container {}
+
+h1 {
+    font-size: 30px;
+}
+
+h2 {
+    font-size: 25px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+h4 {
+    font-size: 18px;
+}
+
+h5 {
+    font-size: 16px;
+}
+
+h6 {
+    font-size: 14px;
+}
+
+.field-validation-error {
+    color: var(--red-color);
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid var(--red-color);
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: var(--red-color);
+}
+
+header {
+    width: 100%;
+    background: var(--blue-color);
+    position: fixed;
+    top: 0;
+    z-index: 100;
+}
+
+.header__content {
+    max-width: 1280px;
+    height: 75px;
+    margin: 0 auto;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header__logo {
+    width: 100px;
+}
+
+.header__logo img {
+    width: 100%;
+    height: 100%;
+}
+
+.header__menu ul {
+    display: flex;
+    align-items: center;
+}
+
+.header__menu__item {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    cursor: pointer;
+    color: white;
+}
+
+.header__item__button {
+    height: 40px;
+    width: auto;
+    padding: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    border-radius: 5px;
+    color: var(--blue-color);
+}
+
+.header__menu__item:hover:not(:last-child) .header__item__image,
+.header__menu__item:hover:not(:last-child) .header__item__text {
+    opacity: 0.5;
+    transition: 0.2s ease 0s;
+}
+
+.header__menu__item:hover:last-child .header__item__button {
+    background: rgba(255, 255, 255, .7);
+}
+
+.header__item__image {
+    width: 30px;
+    margin-right: 10px;
+    position: relative;
+}
+
+.header__image__count {
+    position: absolute;
+    height: 25px;
+    width: 25px;
+    border: 2px solid var(--blue-color);
+    background: var(--green-color);
+    border-radius: 50%;
+    top: -35%;
+    right: -35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.header__item__image svg {
+    width: 100%;
+    height: 100%;
+}
+
+.header__item__image svg path {
+    fill: white;
+}
+
+.header__item__text {}
+
+footer {
+    background: var(--blue-color);
+}
+
+.footer__content {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.footer__content__logo {
+    width: 100px;
+    margin: 0 auto;
+}
+
+.footer__content__logo img {
+    width: 100%;
+    height: 100%;
+}
+
+.footer__content__text {
+    margin: 50px auto 0 auto;
+    text-align: center;
+    max-width: 800px;
+    color: white;
+}
+
+.content {
+    margin: 85px 0 20px 0;
+    min-height: calc(100vh - 188px);
+}
+
+.header__profile__list {
+    position: absolute;
+    z-index: 1;
+    top: 30%;
+    width: 150px;
+    height: 0;
+}
+
+#profile {
+    position: relative;
+}
+
+.header__profile__list__content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: auto;
+    padding-top: 20px;
+    transform: scaleY(0);
+    margin: 50px 0 0 0;
+    background: var(--gray-color);
+    border-radius: 5px;
+    box-shadow: 0 0 3px #000;
+    transition: 0.2s ease 0s;
+    transform-origin: 0 0;
+    min-width: 200px;
+}
+
+#profile:hover .header__profile__list {
+    height: 75px;
+}
+
+#profile:hover .header__profile__list__content {
+    transform: scaleY(1);
+}
+
+.header__list__info {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.header__info__logo {
+    width: 50px;
+    height: 50px;
+    background: var(--dark-gray-color);
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.header__info__logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.header__info__text {
+    color: black;
+}
+
+.header__profile__list__content span {
+    display: block;
+    margin: 20px 0;
+    color: black;
+    padding: 0 20px;
+}
+
+.header__profile__list__content ul .header__list__ul__item {
+    width: 100%;
+    padding: 15px 20px;
+    display: block;
+    color: black;
+    transition: 0.2s ease 0s;
+}
+
+.header__profile__list__content ul {
+    display: block;
+}
+
+.header__profile__list__content ul .header__list__ul__item:hover {
+    background: var(--blue-color);
+    color: white;
+}
+
+.header__list__ul__item[onclick] {
+    border-top: 1px solid var(--dark-gray-color);
+}
+
+.header__add__product {
+    display: none;
+}
+
+.shimmer {
+    background-image: linear-gradient(90deg,
+            #eee 0%, #eee 40%,
+            #ddd 50%, #ddd 55%,
+            #eee 65%, #eee 100%);
+    background-size: 400%;
+    animation: shimmer 1500ms infinite;
+}
+
+@keyframes shimmer {
+    from {
+        background-position: 100% 100%;
+    }
+
+    to {
+        background-position: 0 0;
+    }
+}
+
+
+input {
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    border: 0;
+    -webkit-text-fill-color: black;
+    -webkit-box-shadow: 0;
+    transition: background-color 5000s ease-in-out 0s;
+    border: 2px solid var(--dark-gray-color);
+}
+
+.input__display {
+    display: block;
+    padding: 0 10px;
+    position: absolute;
+    top: -10%;
+    left: 20px;
+    background: white;
+    color: var(--dark-two-gray-color);
+}
+
+._checkbox {
+    width: 25px;
+    height: 25px;
+    position: relative;
+}
+
+/* для элемента input c type="checkbox" */
+._checkbox__content {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+/* для элемента label, связанного с ._checkbox__content */
+._checkbox__content+label {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+/* создание в label псевдоэлемента before со следующими стилями */
+._checkbox__content+label::before {
+    content: '';
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid var(--dark-gray-color);
+    border-radius: 5px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50% 50%;
+    margin-right: 10px;
+}
+
+/* стили при наведении курсора на checkbox */
+._checkbox__content:not(:disabled):not(:checked)+label:hover::before {
+    border-color: var(--green-color);
+}
+
+/* стили для активного чекбокса (при нажатии на него) */
+._checkbox__content:not(:disabled):active+label::before {
+    background-color: var(--green-color);
+    border-color: #b3d7ff;
+}
+
+
+/* стили для чекбокса, находящегося в фокусе и не находящегося в состоянии checked */
+._checkbox__content:focus:not(:checked)+label::before {
+    border-color: #80bdff;
+}
+
+/* стили для чекбокса, находящегося в состоянии checked */
+._checkbox__content:checked+label::before {
+    border-color: var(--green-color);
+    background-color: var(--green-color);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+}
+
+/* стили для чекбокса, находящегося в состоянии disabled */
+._checkbox__content:disabled+label::before {
+    background-color: #e9ecef;
+}
+
+._radio {
+    width: 25px;
+    height: 25px;
+    position: relative;
+}
+
+._radio__content {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+/* для элемента label связанного с ._radio__content */
+._radio__content+label {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+/* создание в label псевдоэлемента  before со следующими стилями */
+._radio__content+label::before {
+    content: '';
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid var(--dark-gray-color);
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50% 50%;
+    margin-right: 10px;
+}
+
+/* стили при наведении курсора на радио */
+._radio__content:not(:disabled):not(:checked)+label:hover::before {
+    border-color: var(--green-color);
+}
+
+/* стили для активной радиокнопки (при нажатии на неё) */
+._radio__content:not(:disabled):active+label::before {
+    background-color: var(--green-color);
+    border-color: var(--green-color);
+}
+
+/* стили для радиокнопки, находящейся в фокусе и не находящейся в состоянии checked */
+._radio__content:focus:not(:checked)+label::before {
+    border-color: var(--green-color);
+}
+
+/* стили для радиокнопки, находящейся в состоянии checked */
+._radio__content:checked+label::before {
+    border-color: var(--green-color);
+    background-color: var(--green-color);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+}
+
+/* стили для радиокнопки, находящейся в состоянии disabled */
+._radio__content:disabled+label::before {
+    background-color: #e9ecef;
+}
+
+._radio2 {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+._radio2 input[type=radio] {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+._radio2 label {
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    padding: 0px 15px;
+    line-height: 34px;
+    border: 1px solid var(--green-color);
+    border-radius: 6px;
+    user-select: none;
+}
+
+/* Checked */
+._radio2 input[type=radio]:checked+label {
+    background: var(--green-color);
+    color: white;
+}
+
+
+/* Disabled */
+._radio2 input[type=radio]:disabled+label {
+    background: var(--green-color);
+    color: #666;
+}
+
+.error__validation {
+    color: var(--red-color);
+    display: none;
+}
+
+._scroll::-webkit-scrollbar {
+    width: 15px;
+}
+
+._scroll::-webkit-scrollbar-track {
+    background: var(--gray-color);
+    border-radius: 20px;
+}
+
+._scroll::-webkit-scrollbar-thumb {
+    background-color: var(--blue-color);
+    border-radius: 20px;
+    border: 3px solid rgb(255, 255, 255);
+}
+
+._unselectable {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Chrome/Safari/Opera */
+    -khtml-user-select: none;
+    /* Konqueror */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+                                    not supported by any browser */
+}
+
+._line {
+    width: 100%;
+    height: 1px;
+    background: var(--dark-two-gray-color);
+}
+
+@media(max-width: 1280px) {
+    .header__content {
+        padding: 10px 20px;
+    }
+
+    .content {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+@media(max-width: 900px) {
+    .header__item__text {
+        display: none;
+    }
+
+    .header__item__button {
+        display: none;
+    }
+
+    .header__add__product {
+        display: block;
+    }
+
+    .header__profile__list__content {
+        left: -350%;
+        margin: 50px 0 0 0;
+    }
+
+    .header__profile__list {
+        top: 30%;
+        width: 50px;
+        height: 0;
+    }
+}
+
+@media(max-width: 500px) {
+    .header__logo {
+        display: none;
+    }
+
+    .header__menu {
+        width: 100%;
+    }
+
+    .header__menu ul {
+        justify-content: space-between;
+    }
+
+    header {
+        top: auto;
+        bottom: 0;
+        border-top: 2px solid #fff;
+    }
+
+    .content {
+        margin: 20px 10px;
+    }
+
+    .header__content {
+        height: 60px;
+    }
+
+    .container {
+        padding-bottom: 60px;
+    }
+
+    .header__item__image {
+        margin-right: 0;
+    }
+
+    .header__menu__item {
+        margin-left: 0;
+    }
+
+    .header__profile__list {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        position: fixed;
+    }
+
+    .header__profile__list__content {
+        margin: 50px 0 0 0;
+    }
+
+    #profile {
+        position: static;
+    }
+
+    .header__profile__list__content {
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding-top: 20px;
+        margin: 0;
+    }
+}

@@ -1,0 +1,119 @@
+.authorization {}
+
+.authorization__content {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 100px 0 0 0;
+    position: relative;
+}
+
+.authorization__content__form {
+    margin: 0 auto;
+    max-width: 500px;
+    background: white;
+    box-shadow: 0 0 8px rgba(0, 0, 0, .1);
+    border-radius: 5px;
+}
+
+.authorization__form__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+}
+
+.authorization__form__header__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    color: black;
+}
+
+._active__form__item {
+    border-bottom: 2px solid var(--blue-color);
+}
+
+.authorization__form__content {
+    padding: 40px 20px;
+}
+
+.authorization__form__item {
+    width: 100%;
+    position: relative;
+    margin: 0 0 40px 0;
+}
+
+.authorization__form__item:last-child {
+    margin: 0;
+}
+
+.authorization__form__item input:not([type="submit"]) {
+    border: 2px solid var(--dark-gray-color);
+}
+
+.authorization__form__item input:not(.input__password) {
+    padding: 0 20px;
+}
+
+.input__password {
+    padding: 0 50px 0 20px;
+}
+
+
+input:not([type="submit"]):focus {
+    border: 2px solid var(--green-color) !important;
+}
+
+.authorization__form__submit {
+    background: var(--blue-color);
+    color: white;
+    cursor: pointer;
+}
+
+.authorization__form__submit:hover {
+    background: var(--blue-hover-color);
+}
+
+.forgotPassword {
+    display: block;
+    text-align: right;
+    text-align: center;
+}
+
+.forgotPassword a {
+    color: var(--blue-color);
+}
+
+.view__eye {
+    position: absolute;
+    top: 20%;
+    right: 10px;
+    height: 35%;
+    cursor: pointer;
+}
+
+.view__eye:hover svg path {
+    fill: var(--dark-two-gray-color);
+}
+
+.view__eye svg {
+    width: 100%;
+    height: 100%;
+}
+
+@media(max-width: 1280px) {
+    .illustration {
+        position: absolute;
+        top: 200px;
+        right: 10px;
+        width: 150px;
+    }
+}
+
+@media(max-width: 500px) {
+    .authorization__content {
+        padding: 20px 0 250px 0;
+    }
+}
