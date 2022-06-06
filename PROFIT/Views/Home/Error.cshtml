@@ -1,0 +1,31 @@
+﻿@{
+Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/nullStyle.css">
+    <link rel="stylesheet" href="~/css/error.css">
+    <title>404</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="error">
+                <div class="error__photo">
+                    <img src="~/img/error.png" alt="">
+                </div>
+                <div class="error__title"><span>404</span></div>
+                <div class="error__text">Ошибка! Страница не найдена</div>
+                <a asp-controller="Home" asp-action="Index"><div class="error__button">Вернуться на главную</div></a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

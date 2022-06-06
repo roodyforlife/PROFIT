@@ -23,7 +23,7 @@ namespace PROFIT.Services
                 };
                 var mess = new MailMessage(senderEmail, receiverEmail);
                 mess.Subject = "Administration";
-                mess.IsBodyHtml = false;
+                mess.IsBodyHtml = true;
                 mess.Body = message;
                 // smtp.Send(mess);
                 Task.Run(() => smtp.Send(mess));

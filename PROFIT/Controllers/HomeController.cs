@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using PROFIT.Data;
+using PROFIT.Interfaces;
 using PROFIT.Models;
 using System;
 using System.Collections.Generic;
@@ -29,5 +30,7 @@ namespace PROFIT.Controllers
             ViewBag.Account = user;
             return View();
         }
+
+        public ViewResult Error() => View(); 
     }
 }

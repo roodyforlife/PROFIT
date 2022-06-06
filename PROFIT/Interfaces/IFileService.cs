@@ -1,4 +1,5 @@
-﻿using PROFIT.Models;
+﻿using Microsoft.AspNetCore.Http;
+using PROFIT.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,6 @@ namespace PROFIT.Interfaces
 {
     public interface IFileService
     {
-        public void SendConfirmationLink(User user, string email);
+        public void SendConfirmationLink(string email, string link, string file);
     }
 }

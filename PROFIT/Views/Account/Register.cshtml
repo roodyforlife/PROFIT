@@ -7,7 +7,7 @@
 <div class="authorization">
     <div class="authorization__content">
         <div class="authorization__content__form">
-            <form asp-controller="Account" asp-action="Register">
+            <form asp-controller="Account" asp-action="Register" method="post" onsubmit="return submitUserForm();">
                 <div class="authorization__form__header">
                     <a asp-controller="Account" asp-action="Login" class="authorization__form__header__item _unselectable">
                         <h3>Вход</h3>
@@ -91,32 +91,29 @@
                         </span>
                     </div>
                     <div class="authorization__form__item">
-                        <div class="g-recaptcha" data-sitekey="6LeQROEfAAAAAANcgXn0oQRg7k7iNIBOOs-gSiIA"
-                             data-callback="verifyCaptcha"></div>
-                        <div id="g-recaptcha-error"></div>
+                         <div class="g-recaptcha" data-sitekey="6LeQROEfAAAAAANcgXn0oQRg7k7iNIBOOs-gSiIA" data-callback="verifyCaptcha"></div>
+		                <div id="g-recaptcha-error"></div>
                     </div>
-
-                    <script src='https://www.google.com/recaptcha/api.js'></script>
                     <div class="authorization__form__item">
                         <input class="authorization__form__submit" type="submit" value="Регистрация">
                     </div>
                 </div>
-            </form>
+            </form>  <script src='https://www.google.com/recaptcha/api.js'></script>
+	<script>
+		var recaptcha_response = '';
+		function submitUserForm() {
+			if (recaptcha_response.length == 0) {
+				document.getElementById('g-recaptcha-error').innerHTML = '<span class="text1 field-validation-error">Это обязательное поле</span>';
+				return false;
+			}
+			return true;
+		}
+
+		function verifyCaptcha(token) {
+			recaptcha_response = token;
+			document.getElementById('g-recaptcha-error').innerHTML = '';
+		}
+	</script>
         </div>
     </div>
 </div>
-<script>
-                var recaptcha_response = '';
-                function submitUserForm() {
-                    if (recaptcha_response.length == 0) {
-                        document.getElementById('g-recaptcha-error').innerHTML = '<span class="text1 field-validation-error">Это обязательное поле</span>';
-                        return false;
-                    }
-                    return true;
-                }
-
-                function verifyCaptcha(token) {
-                    recaptcha_response = token;
-                    document.getElementById('g-recaptcha-error').innerHTML = '';
-                }
-</script>
