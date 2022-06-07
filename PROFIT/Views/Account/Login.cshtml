@@ -23,7 +23,7 @@
                             <h6><span asp-validation-for="Email"></span></h6>
                         </span>
                     </div>
-                    <div class="authorization__form__item">
+                    <div class="authorization__form__item under__remember">
                         <input type="password" class="input__password" asp-for="Password">
                         <span class="input__display _unselectable">Введите пароль</span>
                         <div class="view__eye">
@@ -49,12 +49,20 @@
                             <h6><span asp-validation-for="Password"></span></h6>
                         </span>
                     </div>
+                     <div class="authorization__form__item remember__checkbox">
+                         <div class="_checkbox">
+                            <input class="_checkbox__content" type="checkbox" id="Remember" asp-for="RememberMe"
+                                   value="true">
+                            <label for="Remember"></label>
+                        </div>
+                         <h6>Запомнить меня</h6>
+                    </div>
                     <div class="authorization__form__item">
                         <div class="g-recaptcha" data-sitekey="6LeQROEfAAAAAANcgXn0oQRg7k7iNIBOOs-gSiIA" data-callback="verifyCaptcha"></div>
                         <div id="g-recaptcha-error"></div>
                     </div>
                     <div class="authorization__form__item">
-                        <input class="authorization__form__submit" type="submit" value="Войти">
+                        <input class="authorization__form__submit" type="submit" asp-route-ReturnUrl="@Model.ReturnUrl" value="Войти">
                     </div>
                     <div class="forgotPassword">
                         <a href="">Забыли пароль?</a>
@@ -62,7 +70,7 @@
                     <div class="line">
                         <span>или</span>
                     </div>
-                    <a asp-controller="Account" asp-action="GoogleLogin" class="login-with-google-btn" >Sign in with Google</a>
+                    <a asp-controller="Account" asp-route-ReturnUrl="@Model.ReturnUrl" asp-action="GoogleLogin" class="login-with-google-btn" >Sign in with Google</a>
                 </div>
             </form>
             <script src='https://www.google.com/recaptcha/api.js'></script>

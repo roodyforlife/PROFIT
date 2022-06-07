@@ -33,9 +33,9 @@ namespace PROFIT.Controllers
         }
 
         [HttpGet]
-        public IActionResult Login(string returnUrl = null)
+        public IActionResult Login(string ReturnUrl)
         {
-            return View(new LoginViewModel { ReturnUrl = returnUrl });
+            return View(new LoginViewModel() { ReturnUrl = ReturnUrl });
         }
 
         [HttpPost]
@@ -77,11 +77,11 @@ namespace PROFIT.Controllers
         }
 
         [HttpGet]
-        public IActionResult Register()
+        public IActionResult Register(string ReturnUrl)
         {
             var user = _userManager.Users.ToList().FirstOrDefault(x => x.Email == User.Identity.Name);
             ViewBag.Account = user;
-            return View();
+            return View(new RegisterViewModel() { ReturnUrl = ReturnUrl });
         }
 
         [HttpPost]
@@ -101,8 +101,8 @@ namespace PROFIT.Controllers
                     var code = _userManager.GenerateEmailConfirmationTokenAsync(user);
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code.Result },
                         protocol: HttpContext.Request.Scheme);
-                    _fileService.SendConfirmationLink(model.Email, callbackUrl, "emailSend.html");
-                    return RedirectToAction("Login");
+                    _fileService.SendConfirmationLink(model.Email, callbackUrl, "confirmationLink.html");
+                    return RedirectToAction("Login", new LoginViewModel() { ReturnUrl = model.ReturnUrl});
                 }
                 else
                 {
@@ -142,24 +142,28 @@ namespace PROFIT.Controllers
             await _signInManager.SignOutAsync();
         }
 
-        public IActionResult GoogleLogin()
+        public IActionResult GoogleLogin(string ReturnUrl)
         {
-            string redirectUrl = Url.Action("GoogleResponse", "Account");
+            string redirectUrl = Url.Action("GoogleResponse", "Account", new { ReturnUrl = ReturnUrl });
             var properties = _signInManager.ConfigureExternalAuthenticationProperties("Google", redirectUrl);
             return new ChallengeResult("Google", properties);
         }
 
         [AllowAnonymous]
-        public async Task<IActionResult> GoogleResponse()
+        public async Task<IActionResult> GoogleResponse(string ReturnUrl)
         {
             ExternalLoginInfo info = await _signInManager.GetExternalLoginInfoAsync();
             if (info == null)
                 return RedirectToAction(nameof(Login));
 
             var result = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, false);
-            string[] userInfo = { info.Principal.FindFirst(ClaimTypes.Name).Value, info.Principal.FindFirst(ClaimTypes.Email).Value };
             if (result.Succeeded)
-                return Redirect("../Home/Index");
+            {
+                if (!string.IsNullOrEmpty(ReturnUrl) && Url.IsLocalUrl(ReturnUrl))
+                    return Redirect(ReturnUrl);
+                else
+                    return Redirect("../Home/Index");
+            }
             else
             {
                 User user = _userService.GetInfoFromGoogle(info);
@@ -169,8 +173,12 @@ namespace PROFIT.Controllers
                     identResult = await _userManager.AddLoginAsync(user, info);
                     if (identResult.Succeeded)
                     {
+                        _fileService.SendEmail(user.Email, "sendEmail.html");
                         await _signInManager.SignInAsync(user, false);
-                        return Redirect("../Home/Index");
+                        if (!string.IsNullOrEmpty(ReturnUrl) && Url.IsLocalUrl(ReturnUrl))
+                            return Redirect(ReturnUrl);
+                        else
+                            return Redirect("../Home/Index");
                     }
                 }
                 return RedirectToAction("Register");

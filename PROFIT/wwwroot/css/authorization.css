@@ -116,7 +116,19 @@
 .authorization__form__item {
     width: 100%;
     position: relative;
-    margin: 0 0 40px 0;
+}
+    .authorization__form__item:not(.under__remember) {
+        margin: 0 0 40px 0;
+    }
+.under__remember{
+    margin: 0 0 10px 0;
+}
+.remember__checkbox {
+    display: flex;
+    align-items: center;
+}
+.remember__checkbox ._checkbox {
+    margin: 0 10px 0 0;
 }
 
 .authorization__form__item:last-child {

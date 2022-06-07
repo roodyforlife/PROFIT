@@ -1,8 +1,9 @@
 <HTML>
 
 <head>
-    <title>PROFIT</title>
-</head>
+    <title>
+        ПРивет всем
+    </title>
 
 <body>
     <style>
@@ -139,15 +140,13 @@
 
         .button {
             max-width: 200px;
-            height: 50px;
             background: #2165d5;
             border-radius: 5px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             color: white;
             font-weight: 600;
             margin: 30px auto;
+            padding: 20px 0;
+            text-align: center;
         }
 
         .button:hover {
@@ -161,11 +160,6 @@
             </div>
             <div class="text">Здравствуйте, вы успешно зарегистрировались на сайте PROFIT. Для подтверждения почты,
                 нажмите на кнопку "Подтвердить email".</div>
-            <a href="{ConfirmationLink}">
-                <div class="button">Подтвердить email</div>
-            </a>
+            {ConfirmationLink}
         </div>
     </div>
-</body>
-
-</HTML>

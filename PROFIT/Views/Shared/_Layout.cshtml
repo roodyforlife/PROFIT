@@ -178,12 +178,12 @@
                                     {
                                         <ul>
                                         <li>
-                                        <a asp-controller="Account" asp-action="Login" class="header__list__ul__item _unselectable">
+                                        <a asp-controller="Account" asp-action="Login" asp-route-ReturnUrl="@Context.Request.Path" class="header__list__ul__item _unselectable">
                                             <h5>Войти</h5>
                                         </a>
                                         </li>
                                         <li>
-                                        <a asp-controller="Account" asp-action="Register" class="header__list__ul__item _unselectable">
+                                        <a asp-controller="Account" asp-action="Register" asp-route-ReturnUrl="@Context.Request.Path" class="header__list__ul__item _unselectable">
                                             <h5>Регистрация</h5>
                                         </a>
                                         </li>

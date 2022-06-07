@@ -31,5 +31,6 @@ namespace PROFIT.ViewModels
         [Compare("Password", ErrorMessage = "Пароли не совпадают")]
         [DataType(DataType.Password)]
         public string PasswordConfirm { get; set; }
+        public string ReturnUrl { get; set; }
     }
 }

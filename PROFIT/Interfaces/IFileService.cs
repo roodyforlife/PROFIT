@@ -10,5 +10,6 @@ namespace PROFIT.Interfaces
     public interface IFileService
     {
         public void SendConfirmationLink(string email, string link, string file);
+        public void SendEmail(string email, string file);
     }
 }

@@ -30,5 +30,18 @@ namespace PROFIT.Services
              EmailService emailService = new EmailService();
             emailService.SendEmailAsync(email, body);
         }
+
+        public void SendEmail(string email, string file)
+        {
+            string body = string.Empty;
+            string path = Path.Combine(_hostingEnvironment.WebRootPath, "Files/email", file);
+            using (StreamReader reader = new StreamReader(path))
+            {
+                body = reader.ReadToEnd();
+            }
+
+            EmailService emailService = new EmailService();
+            emailService.SendEmailAsync(email, body);
+        }
     }
 }
